@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+
+  ppr-react-app:
+    image: ppr-react-app
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    networks:
+      - ppr-app
+
+  ppr-api-server:
+    image: ppr-api-server
+    ports:
+      - "5000:5000"
+    networks:
+      - ppr-app
+    depends_on:
+      - ppr-mongo
+
+  ppr-mongo:
+    image: mongo:3.6.19-xenial
+    ports:
+      - "27017:27017"
+    networks:
+      - ppr-app
+    volumes:
+      - ppr-mongo-data:/data/db
+
+networks:
+  ppr-app:
+    driver: bridge
+
+volumes:
+  ppr-mongo-data:
+    driver: local
