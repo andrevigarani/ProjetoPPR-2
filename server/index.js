@@ -1,7 +1,7 @@
 // app.js
 const express = require('express');
-const MongooseSingleton = require('./singleton/MongooseSingleton');
-const routes = require('./routes');
+const MongooseSingleton = require('./src/singleton/MongooseSingleton');
+const routes = require('./src/routes/index');
 const cors = require('cors');
 
 const app = express(); 

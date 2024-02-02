@@ -1,6 +1,6 @@
-FROM node:14-slim
+FROM node:18
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/
 
 COPY ./package.json ./
 COPY ./yarn.lock ./
@@ -9,6 +9,6 @@ RUN yarn install
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 3000
 
 CMD [ "index.js" ]
