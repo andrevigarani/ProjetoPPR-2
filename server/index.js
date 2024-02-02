@@ -1,23 +1,14 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-const db = require('./db')
-const movieRouter = require('./routes/movie-router')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-const app = express()
-const apiPort = 5000
-
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
-app.use(bodyParser.json())
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-app.use('/api', movieRouter)
-
-app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
